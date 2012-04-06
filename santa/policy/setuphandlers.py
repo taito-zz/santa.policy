@@ -32,4 +32,4 @@ def setupVarious(context):
 
     # portal = context.getSite()
     # setUpDoctype(portal)
-    uninstall_package(context, ['santa.worldpolicy'])
+    uninstall_package(context, ['plonetheme.classic', 'santa.worldpolicy'])
