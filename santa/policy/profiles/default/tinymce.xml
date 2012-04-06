@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<object>
+  <resourcetypes>
+    <link_using_uids value="True"/>
+  </resourcetypes>
+  <layout>
+    <autoresize value="True"/>
+  </layout>
+   <toolbar>
+    <toolbar_forecolor value="True"/>
+    <toolbar_backcolor value="True"/>
+  </toolbar>
+</object>
