@@ -16,10 +16,25 @@ class TestCase(IntegrationTestCase):
         installer = getToolByName(self.portal, 'portal_quickinstaller')
         self.failUnless(installer.isProductInstalled('santa.theme'))
 
+    def test_portal_languages_use_cookie_negotiation(self):
+        languages = getToolByName(self.portal, 'portal_languages')
+        self.assertTrue(languages.use_cookie_negotiation)
+
+    def test_portal_languages_use_request_negotiation(self):
+        languages = getToolByName(self.portal, 'portal_languages')
+        self.assertTrue(languages.use_request_negotiation)
+
+    def test_portal_languages_supported_langs(self):
+        languages = getToolByName(self.portal, 'portal_languages')
+        self.assertEqual(
+            languages.supported_langs,
+            ['en', 'fi', 'ja', 'zh']
+        )
+
     def test_properties__title(self):
         self.assertEqual(
             self.portal.getProperty('title'),
-            'Santa Claus Foundation Finland'
+            'Santa Claus Foundation'
         )
 
     def test_properties__email_from_address(self):
@@ -31,7 +46,15 @@ class TestCase(IntegrationTestCase):
     def test_properties__email_from_name(self):
         self.assertEqual(
             self.portal.getProperty('email_from_name'),
-            'Santa Claus Foundation Finland'
+            'Santa Claus Foundation'
+        )
+
+    def test_propertiestool_site_properties__default_language(self):
+        properties = getToolByName(self.portal, 'portal_properties')
+        site_properties = getattr(properties, 'site_properties')
+        self.assertEqual(
+            site_properties.getProperty('default_language'),
+            'en'
         )
 
     def test_propertiestool_site_properties__disable_nonfolderish_sections(self):
