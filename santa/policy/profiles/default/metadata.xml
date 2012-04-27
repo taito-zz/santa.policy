@@ -2,6 +2,6 @@
 <metadata>
   <version>1</version>
   <dependencies>
-  	<!-- <dependency>profile-santa.theme:default</dependency> -->
+    <dependency>profile-santa.theme:default</dependency>
   </dependencies>
 </metadata>

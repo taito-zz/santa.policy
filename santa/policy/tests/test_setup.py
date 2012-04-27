@@ -1,5 +1,5 @@
-from santa.policy.tests.base import IntegrationTestCase
 from Products.CMFCore.utils import getToolByName
+from santa.policy.tests.base import IntegrationTestCase
 
 
 class TestCase(IntegrationTestCase):
@@ -7,10 +7,14 @@ class TestCase(IntegrationTestCase):
 
     def setUp(self):
         self.portal = self.layer['portal']
-        self.installer = getToolByName(self.portal, 'portal_quickinstaller')
 
-    def test_is_santa_policy_installed(self):
-        self.failUnless(self.installer.isProductInstalled('santa.policy'))
+    def test_santa_policy_installed(self):
+        installer = getToolByName(self.portal, 'portal_quickinstaller')
+        self.failUnless(installer.isProductInstalled('santa.policy'))
+
+    def test_santa_theme_istalled(self):
+        installer = getToolByName(self.portal, 'portal_quickinstaller')
+        self.failUnless(installer.isProductInstalled('santa.theme'))
 
     def test_properties__title(self):
         self.assertEqual(
@@ -86,36 +90,7 @@ class TestCase(IntegrationTestCase):
         javascripts = getToolByName(self.portal, 'portal_javascripts')
         self.assertFalse(javascripts.getResource("++resource++kukit.js").getAuthenticated())
 
-    # def test_theme__enabled(self):
-    #     from zope.component import getUtility
-    #     from plone.registry.interfaces import IRegistry
-    #     registry = getUtility(IRegistry)
-    #     from plone.app.theming.interfaces import IThemeSettings
-    #     settings = registry.forInterface(IThemeSettings)
-    #     self.assertTrue(settings.enabled)
-
-    # def test_theme__rules(self):
-    #     from zope.component import getUtility
-    #     from plone.registry.interfaces import IRegistry
-    #     registry = getUtility(IRegistry)
-    #     from plone.app.theming.interfaces import IThemeSettings
-    #     settings = registry.forInterface(IThemeSettings)
-    #     self.assertEqual(
-    #         settings.rules,
-    #         "/++theme++santa.theme/rules.xml"
-    #     )
-
-    # def test_theme__absolutePrefix(self):
-    #     from zope.component import getUtility
-    #     from plone.registry.interfaces import IRegistry
-    #     registry = getUtility(IRegistry)
-    #     from plone.app.theming.interfaces import IThemeSettings
-    #     settings = registry.forInterface(IThemeSettings)
-    #     self.assertEqual(
-    #         settings.absolutePrefix,
-    #         "/++theme++santa.theme"
-    #     )
-
     def test_uninstall(self):
-        self.installer.uninstallProducts(['santa.policy'])
-        self.failIf(self.installer.isProductInstalled('santa.policy'))
+        installer = getToolByName(self.portal, 'portal_quickinstaller')
+        installer.uninstallProducts(['santa.policy'])
+        self.failIf(installer.isProductInstalled('santa.policy'))

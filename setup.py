@@ -27,7 +27,7 @@ setup(
     install_requires=[
         'hexagonit.testing',
         'plone.browserlayer',
-        # 'santa.theme',
+        'santa.theme',
         'setuptools',
     ],
     entry_points="""
