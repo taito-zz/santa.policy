@@ -16,6 +16,14 @@ class TestCase(IntegrationTestCase):
         installer = getToolByName(self.portal, 'portal_quickinstaller')
         self.failUnless(installer.isProductInstalled('santa.theme'))
 
+    def test_PloneFormGen_istalled(self):
+        installer = getToolByName(self.portal, 'portal_quickinstaller')
+        self.failUnless(installer.isProductInstalled('PloneFormGen'))
+
+    def test_LinguaPlone_istalled(self):
+        installer = getToolByName(self.portal, 'portal_quickinstaller')
+        self.failUnless(installer.isProductInstalled('LinguaPlone'))
+
     def test_portal_languages_use_cookie_negotiation(self):
         languages = getToolByName(self.portal, 'portal_languages')
         self.assertTrue(languages.use_cookie_negotiation)
@@ -112,6 +120,30 @@ class TestCase(IntegrationTestCase):
     def test_jsregistry__kukit(self):
         javascripts = getToolByName(self.portal, 'portal_javascripts')
         self.assertFalse(javascripts.getResource("++resource++kukit.js").getAuthenticated())
+
+    def test_folder__news__language(self):
+        item = self.portal['news']
+        self.assertEqual(item.Language(), '')
+
+    def test_folder__news__title(self):
+        item = self.portal['news']
+        self.assertEqual(item.Title(), 'News')
+
+    def test_folder__events__language(self):
+        item = self.portal['events']
+        self.assertEqual(item.Language(), '')
+
+    def test_folder__events__title(self):
+        item = self.portal['events']
+        self.assertEqual(item.Title(), 'Events')
+
+    def test_folder__head(self):
+        languages = getToolByName(self.portal, 'portal_languages')
+        for lang in languages.supported_langs:
+            self.failUnless(self.portal['head'][lang])
+
+    def test_folder__head__exclude_from_nav(self):
+        self.assertTrue(self.portal['head'].exclude_from_nav)
 
     def test_uninstall(self):
         installer = getToolByName(self.portal, 'portal_quickinstaller')
