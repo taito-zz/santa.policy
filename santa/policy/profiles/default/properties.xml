@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <site>
  <property name="title">Santa Claus Foundation</property>
- <property name="description"></property>
+ <property name="description">Be Santa for Kids' Future</property>
  <property name="selectable_views" type="lines">
   <element value="folder_listing"/>
   <element value="news_listing"/>

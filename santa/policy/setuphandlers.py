@@ -86,6 +86,16 @@ def create_languages(context, parent):
             logger.info(message)
 
 
+def setPortalView(context):
+    portal = context.getSite()
+    if portal.getLayout() != 'santa-view':
+        logger = context.getLogger(package)
+        logger.info('Setting portal laytout to santa-view.')
+        portal.setLayout('santa-view')
+        logger.info('Set portal laytout to santa-view.')
+
+
+
 def exclude_from_nav(context, obj):
     logger = context.getLogger(package)
     if not obj.exclude_from_nav():
@@ -108,7 +118,8 @@ def setupVarious(context):
     portal = context.getSite()
     update_objects(context, portal, ['news', 'events'])
 
-    create_objects(context, portal, ['foundation', 'partners', 'cases', 'head'])
-    for oid in ['cases', 'foundation', 'head', 'partners']:
+    create_objects(context, portal, ['foundation', 'partners', 'cases'])
+    for oid in ['cases', 'foundation', 'partners']:
         create_languages(context, portal[oid])
-    exclude_from_nav(context, portal['head'])
+
+    setPortalView(context)
