@@ -1,7 +1,4 @@
 from Products.CMFCore.utils import getToolByName
-from plone.app.theming.interfaces import IThemeSettings
-from plone.registry.interfaces import IRegistry
-from zope.component import getUtility
 
 package = 'santa.policy'
 
@@ -23,7 +20,6 @@ def uninstall_package(context, packages):
 
 
 def create_objects(context, parent, ids, ctype='Folder', capitalize=True, language=''):
-    logger = context.getLogger(package)
     if not isinstance(ids, list):
         ids = [ids]
     for oid in ids:
@@ -61,7 +57,7 @@ def update_objects(context, parent, ids, language=''):
 def update_folders_language(context):
     for oid in ['news', 'events']:
         portal = context.getSite()
-        update_language(context, portal[oid])
+        update_objects(context, portal[oid])
 
 
 def create_languages(context, parent):
@@ -93,7 +89,6 @@ def setPortalView(context):
         logger.info('Setting portal laytout to santa-view.')
         portal.setLayout('santa-view')
         logger.info('Set portal laytout to santa-view.')
-
 
 
 def exclude_from_nav(context, obj):

@@ -140,10 +140,7 @@ class TestCase(IntegrationTestCase):
     def test_folder__head(self):
         languages = getToolByName(self.portal, 'portal_languages')
         for lang in languages.supported_langs:
-            self.failUnless(self.portal['head'][lang])
-
-    def test_folder__head__exclude_from_nav(self):
-        self.assertTrue(self.portal['head'].exclude_from_nav)
+            self.failUnless(self.portal['foundation'][lang])
 
     def test_uninstall(self):
         installer = getToolByName(self.portal, 'portal_quickinstaller')
