@@ -57,6 +57,12 @@ class TestCase(IntegrationTestCase):
             'Santa Claus Foundation'
         )
 
+    def test_properties__default_page(self):
+        self.assertEqual(
+            self.portal.getProperty('default_page'),
+            'sll-view'
+        )
+
     def test_propertiestool_site_properties__default_language(self):
         properties = getToolByName(self.portal, 'portal_properties')
         site_properties = getattr(properties, 'site_properties')

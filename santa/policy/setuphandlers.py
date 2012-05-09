@@ -103,6 +103,32 @@ def exclude_from_nav(context, obj):
         logger.info(message)
 
 
+def removeFolder(context, oid):
+    portal = context.getSite()
+    if portal.get(oid):
+        logger = context.getLogger(package)
+        message = 'Removing {0}.'.format(oid)
+        logger.info(message)
+        portal.manage_delObjects(['Members'])
+        message = 'Removed {0}.'.format(oid)
+        logger.info(message)
+
+
+def updateCases(context):
+    portal = context.getSite()
+    oid = 'cases'
+    item = portal[oid]
+    title = 'Use Cases'
+    if item.Title() != title:
+        logger = context.getLogger(package)
+        message = 'Setting {0} title to {1}.'.format(oid, title)
+        logger.info(message)
+        item.setTitle(title)
+        item.reindexObject(idxs=['Title'])
+        message = 'Set {0} title to {1}.'.format(oid, title)
+        logger.info(message)
+
+
 def setupVarious(context):
 
     if context.readDataFile('santa.policy_various.txt') is None:
@@ -118,3 +144,5 @@ def setupVarious(context):
         create_languages(context, portal[oid])
 
     setPortalView(context)
+    removeFolder(context, 'Members')
+    updateCases(context)
