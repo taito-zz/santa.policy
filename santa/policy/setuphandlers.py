@@ -139,8 +139,8 @@ def setupVarious(context):
     portal = context.getSite()
     update_objects(context, portal, ['news', 'events'])
 
-    create_objects(context, portal, ['foundation', 'partners', 'cases'])
-    for oid in ['cases', 'foundation', 'partners']:
+    create_objects(context, portal, ['foundation', 'partners', 'cases', 'inquries'])
+    for oid in ['cases', 'foundation', 'partners', 'inquries']:
         create_languages(context, portal[oid])
 
     setPortalView(context)

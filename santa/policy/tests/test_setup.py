@@ -39,6 +39,36 @@ class TestCase(IntegrationTestCase):
             ['en', 'fi', 'ja', 'zh']
         )
 
+    def test_portlets_Login(self):
+        from plone.portlets.interfaces import IPortletType
+        from zope.component import queryUtility
+        portlet = queryUtility(IPortletType, name='portlets.Login')
+        self.failIf(portlet)
+
+    def test_portlets_Classic(self):
+        from plone.portlets.interfaces import IPortletType
+        from zope.component import queryUtility
+        portlet = queryUtility(IPortletType, name='portlets.Classic')
+        self.failIf(portlet)
+
+    def test_portlets__news_removed_from_right_column(self):
+        from zope.component import getMultiAdapter
+        from zope.component import getUtility
+        from plone.portlets.interfaces import IPortletManager
+        from plone.portlets.interfaces import IPortletAssignmentMapping
+        column = getUtility(IPortletManager, name=u"plone.rightcolumn")
+        assignable = getMultiAdapter((self.portal, column), IPortletAssignmentMapping)
+        self.assertFalse('news' in assignable.keys())
+
+    def test_portlets__events_removed_from_right_column(self):
+        from zope.component import getMultiAdapter
+        from zope.component import getUtility
+        from plone.portlets.interfaces import IPortletManager
+        from plone.portlets.interfaces import IPortletAssignmentMapping
+        column = getUtility(IPortletManager, name=u"plone.rightcolumn")
+        assignable = getMultiAdapter((self.portal, column), IPortletAssignmentMapping)
+        self.assertFalse('events' in assignable.keys())
+
     def test_properties__title(self):
         self.assertEqual(
             self.portal.getProperty('title'),
