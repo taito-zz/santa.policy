@@ -36,11 +36,11 @@ def create_objects(context, parent, ids, ctype='Folder', capitalize=True, langua
             obj.reindexObject()
 
 
-def update_objects(context, parent, ids, language=''):
+def update_objects(context, parent, oids, language=''):
     logger = context.getLogger(package)
-    if not isinstance(ids, list):
-        ids = [ids]
-    for oid in ids:
+    if not isinstance(oids, list):
+        oids = [oids]
+    for oid in oids:
         obj = parent.get(oid)
         if obj:
             current_language = obj.Language()
@@ -52,12 +52,6 @@ def update_objects(context, parent, ids, language=''):
                 obj.reindexObject()
                 message = 'Updated {0}.'.format(oid)
                 logger.info(message)
-
-
-def update_folders_language(context):
-    for oid in ['news', 'events']:
-        portal = context.getSite()
-        update_objects(context, portal[oid])
 
 
 def create_languages(context, parent):
@@ -77,6 +71,7 @@ def create_languages(context, parent):
                     language=oid,
                 )
             ]
+            obj.setExcludeFromNav(True)
             obj.reindexObject()
             message = 'Created {0} in {1}.'.format(oid, pid)
             logger.info(message)
@@ -103,15 +98,17 @@ def exclude_from_nav(context, obj):
         logger.info(message)
 
 
-def removeFolder(context, oid):
+def removeFolders(context, oids):
     portal = context.getSite()
-    if portal.get(oid):
-        logger = context.getLogger(package)
-        message = 'Removing {0}.'.format(oid)
-        logger.info(message)
-        portal.manage_delObjects(['Members'])
-        message = 'Removed {0}.'.format(oid)
-        logger.info(message)
+    if not isinstance(oids, list):
+        oids = [oids]
+    oids = [oid for oid in oids if portal.get(oid)]
+    logger = context.getLogger(package)
+    message = 'Removing {0}.'.format(', '.join(oids))
+    logger.info(message)
+    portal.manage_delObjects(oids)
+    message = 'Removed {0}.'.format(', '.join(oids))
+    logger.info(message)
 
 
 def updateCases(context):
@@ -134,15 +131,18 @@ def setupVarious(context):
     if context.readDataFile('santa.policy_various.txt') is None:
         return
 
-    uninstall_package(context, ['plonetheme.classic', 'santa.worldpolicy'])
+    uninstall_package(context, ['plonetheme.classic', 'santa.worldpolicy', 'santa.worldtheme'])
 
     portal = context.getSite()
-    update_objects(context, portal, ['news', 'events'])
 
     create_objects(context, portal, ['foundation', 'partners', 'cases', 'inquiries'])
+
+    update_objects(context, portal, ['news', 'events', 'partners', 'links', ])
+
     for oid in ['cases', 'foundation', 'partners', 'inquiries']:
         create_languages(context, portal[oid])
 
     setPortalView(context)
-    removeFolder(context, 'Members')
+    removeFolders(context, ['Members', 'products', 'about'])
+
     updateCases(context)
