@@ -26,7 +26,6 @@ setup(
     zip_safe=False,
     install_requires=[
         'Products.LinguaPlone',
-        'Products.PloneFormGen',
         'hexagonit.testing',
         'plone.browserlayer',
         'santa.theme',
