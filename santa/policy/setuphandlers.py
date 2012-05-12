@@ -19,7 +19,14 @@ def uninstall_package(context, packages):
     installer.uninstallProducts(packages)
 
 
-def create_objects(context, parent, ids, ctype='Folder', capitalize=True, language=''):
+def create_objects(
+    context,
+    parent,
+    ids,
+    ctype='Folder',
+    capitalize=True,
+    language=''
+):
     if not isinstance(ids, list):
         ids = [ids]
     for oid in ids:
@@ -33,6 +40,7 @@ def create_objects(context, parent, ids, ctype='Folder', capitalize=True, langua
                     language=language,
                 )
             ]
+            obj.setLayout('santa-view')
             obj.reindexObject()
 
 
@@ -49,6 +57,7 @@ def update_objects(context, parent, oids, language=''):
                 logger.info(message)
                 obj.getField('language').set(obj, language)
                 obj.setTitle(oid.capitalize())
+                obj.setLayout('santa-view')
                 obj.reindexObject()
                 message = 'Updated {0}.'.format(oid)
                 logger.info(message)
@@ -59,6 +68,11 @@ def create_languages(context, parent):
     portal = context.getSite()
     languages = getToolByName(portal, 'portal_languages')
     pid = parent.id
+    locally_allowed_types = list(parent.getLocallyAllowedTypes())
+    doc = 'Document'
+    if doc not in locally_allowed_types:
+        locally_allowed_types.append(doc)
+        parent.setLocallyAllowedTypes(tuple(locally_allowed_types))
     for oid in languages.supported_langs:
         obj = parent.get(oid)
         if not obj:
@@ -131,15 +145,28 @@ def setupVarious(context):
     if context.readDataFile('santa.policy_various.txt') is None:
         return
 
-    uninstall_package(context, ['plonetheme.classic', 'santa.worldpolicy', 'santa.worldtheme'])
+    uninstall_package(
+        context,
+        ['plonetheme.classic', 'santa.worldpolicy', 'santa.worldtheme']
+    )
 
     portal = context.getSite()
 
-    create_objects(context, portal, ['foundation', 'partners', 'cases', 'inquiries'])
+    create_objects(
+        context, portal,
+        ['foundation', 'partners', 'cases', 'inquiries']
+    )
 
-    update_objects(context, portal, ['news', 'events', 'partners', 'links', ])
+    update_objects(context, portal, ['news', 'events', 'partners', 'links'])
 
-    for oid in ['cases', 'foundation', 'partners', 'inquiries']:
+    for oid in [
+        'cases',
+        'events',
+        'foundation',
+        'inquiries',
+        'news',
+        'partners',
+    ]:
         create_languages(context, portal[oid])
 
     setPortalView(context)
