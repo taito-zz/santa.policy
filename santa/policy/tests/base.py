@@ -14,7 +14,7 @@ class SantaPolicyLayer(PloneSandboxLayer):
     def setUpZope(self, app, configurationContext):
         """Set up Zope."""
 
-        # Required by Products.CMFPlone:plone-content to setup defaul plone site.
+        # Required by Products.CMFPlone:plone-content for default plone site.
         z2.installProduct(app, 'Products.PythonScripts')
 
         # Load ZCML
@@ -24,10 +24,10 @@ class SantaPolicyLayer(PloneSandboxLayer):
     def setUpPloneSite(self, portal):
         """Set up Plone."""
 
-        # Installs all the Plone stuff. Workflows etc. to setup defaul plone site.
+        # Installs all the Plone stuff to setup defaul plone site.
         self.applyProfile(portal, 'Products.CMFPlone:plone')
 
-        # Install portal content. Including the Members folder! to setup defaul plone site.
+        # Install portal content including the Members folder!.
         self.applyProfile(portal, 'Products.CMFPlone:plone-content')
 
         # Install into Plone site using portal_setup
