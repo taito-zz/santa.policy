@@ -1,0 +1,17 @@
+<configure
+  i18n_domain="santa.policy"
+  xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+  xmlns="http://namespaces.zope.org/zope"
+  >
+
+  <genericsetup:upgradeStep
+    description=""
+    destination="2"
+    handler="santa.policy.upgrades.upgrade_0_to_1"
+    profile="santa.policy:default"
+    sortkey="1"
+    source="1"
+    title="Reimport propertiestool.xml for webstats_js."
+    />
+
+</configure>

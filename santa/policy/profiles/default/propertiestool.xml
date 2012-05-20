@@ -1,23 +1,36 @@
 <?xml version="1.0"?>
 <object name="portal_properties" meta_type="Plone Properties Tool">
   <object name="site_properties" meta_type="Plone Property Sheet">
-      <property
-        name="default_language"
-        type="string">en</property>
-      <property
-        name="disable_nonfolderish_sections"
-        type="boolean">True</property>
-      <property
-        name="use_email_as_login"
-        type="boolean">True</property>
-      <property
-        name="icon_visibility"
-        type="string">authenticated</property>
-      <property
-        name="exposeDCMetaTags"
-        type="boolean">True</property>
-      <property
-        name="enable_sitemap"
-        type="boolean">True</property>
+    <property
+      name="default_language"
+      type="string">en</property>
+    <property
+      name="disable_nonfolderish_sections"
+      type="boolean">True</property>
+    <property
+      name="use_email_as_login"
+      type="boolean">True</property>
+    <property
+      name="icon_visibility"
+      type="string">authenticated</property>
+    <property
+      name="exposeDCMetaTags"
+      type="boolean">True</property>
+    <property
+      name="enable_sitemap"
+      type="boolean">True</property>
+    <property name="webstats_js" type="string">&lt;script type="text/javascript"&gt;
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31909586-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+&lt;/script&gt;</property>
   </object>
 </object>

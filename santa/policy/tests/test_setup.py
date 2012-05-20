@@ -24,6 +24,13 @@ class TestCase(IntegrationTestCase):
         installer = getToolByName(self.portal, 'portal_quickinstaller')
         self.failUnless(installer.isProductInstalled('LinguaPlone'))
 
+    def test_metadata__version(self):
+        setup = getToolByName(self.portal, 'portal_setup')
+        self.assertEqual(
+            setup.getVersionForProfile('profile-santa.policy:default'),
+            u'2'
+        )
+
     def test_portal_languages_use_cookie_negotiation(self):
         languages = getToolByName(self.portal, 'portal_languages')
         self.assertTrue(languages.use_cookie_negotiation)
@@ -128,6 +135,14 @@ class TestCase(IntegrationTestCase):
         properties = getToolByName(self.portal, 'portal_properties')
         site_properties = getattr(properties, 'site_properties')
         self.assertTrue(site_properties.getProperty('enable_sitemap'))
+
+    def test_propertiestool__webstats_js(self):
+        properties = getToolByName(self.portal, 'portal_properties')
+        site_props = properties.site_properties
+        self.assertEqual(
+            site_props.getProperty('webstats_js'),
+            '<script type="text/javascript">\n\nvar _gaq = _gaq || [];\n_gaq.push([\'_setAccount\', \'UA-31909586-1\']);\n_gaq.push([\'_trackPageview\']);\n\n(function() {\nvar ga = document.createElement(\'script\'); ga.type = \'text/javascript\'; ga.async = true;\nga.src = (\'https:\' == document.location.protocol ? \'https://ssl\' : \'http://www\') + \'.google-analytics.com/ga.js\';\nvar s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(ga, s);\n})();\n\n</script>'
+        )
 
     def test_mailhost__smtp_host(self):
         mailhost = getToolByName(self.portal, 'MailHost')
