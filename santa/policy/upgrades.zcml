@@ -14,4 +14,6 @@
     title="Reimport propertiestool.xml for webstats_js."
     />
 
+  <include file="upgrades.zcml"/>
+
 </configure>
