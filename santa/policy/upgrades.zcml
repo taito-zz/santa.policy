@@ -7,7 +7,7 @@
   <genericsetup:upgradeStep
     description=""
     destination="2"
-    handler="santa.policy.upgrades.upgrade_0_to_1"
+    handler="santa.policy.upgrades.upgrade_1_to_2"
     profile="santa.policy:default"
     sortkey="1"
     source="1"
