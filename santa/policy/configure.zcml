@@ -16,4 +16,6 @@
     title="santa.policy"
     />
 
+  <include file="upgrades.zcml"/>
+
 </configure>
