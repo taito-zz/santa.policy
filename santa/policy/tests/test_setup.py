@@ -28,7 +28,7 @@ class TestCase(IntegrationTestCase):
         setup = getToolByName(self.portal, 'portal_setup')
         self.assertEqual(
             setup.getVersionForProfile('profile-santa.policy:default'),
-            u'2'
+            u'3'
         )
 
     def test_portal_languages_use_cookie_negotiation(self):
@@ -43,7 +43,7 @@ class TestCase(IntegrationTestCase):
         languages = getToolByName(self.portal, 'portal_languages')
         self.assertEqual(
             languages.supported_langs,
-            ['en', 'fi', 'ja', 'zh']
+            ['en', 'fi', 'ja']
         )
 
     def test_portlets_Login(self):

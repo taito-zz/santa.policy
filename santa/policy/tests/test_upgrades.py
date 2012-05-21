@@ -25,3 +25,21 @@ class TestCase(IntegrationTestCase):
             site_properties.getProperty('webstats_js'),
             '<script type="text/javascript">\n\nvar _gaq = _gaq || [];\n_gaq.push([\'_setAccount\', \'UA-31909586-1\']);\n_gaq.push([\'_trackPageview\']);\n\n(function() {\nvar ga = document.createElement(\'script\'); ga.type = \'text/javascript\'; ga.async = true;\nga.src = (\'https:\' == document.location.protocol ? \'https://ssl\' : \'http://www\') + \'.google-analytics.com/ga.js\';\nvar s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(ga, s);\n})();\n\n</script>'
         )
+
+    def test_upgrades_2_to_3(self):
+
+        languages = getToolByName(self.portal, 'portal_languages')
+        langs = ['en', 'fi', 'ja', 'zh']
+        languages.supported_langs = langs
+        self.assertEqual(
+            languages.supported_langs,
+            langs
+        )
+
+        from santa.policy.upgrades import upgrade_2_to_3
+        upgrade_2_to_3(self.portal)
+
+        self.assertEqual(
+            languages.supported_langs,
+            ['en', 'fi', 'ja']
+        )
