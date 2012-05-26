@@ -26,6 +26,8 @@ setup(
     zip_safe=False,
     install_requires=[
         'Products.LinguaPlone',
+        'abita.development',
+        'five.grok',
         'hexagonit.testing',
         'plone.browserlayer',
         'santa.theme',

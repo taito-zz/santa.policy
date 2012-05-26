@@ -113,6 +113,14 @@ class TestCase(IntegrationTestCase):
         site_properties = getattr(properties, 'site_properties')
         self.assertTrue(site_properties.getProperty('disable_nonfolderish_sections'))
 
+    def test_propertiestool_site_properties__external_links_open_new_window(self):
+        properties = getToolByName(self.portal, 'portal_properties')
+        site_properties = getattr(properties, 'site_properties')
+        self.assertEqual(
+            site_properties.getProperty('external_links_open_new_window'),
+            'true'
+        )
+
     def test_propertiestool_site_properties__use_email_as_login(self):
         properties = getToolByName(self.portal, 'portal_properties')
         site_properties = getattr(properties, 'site_properties')

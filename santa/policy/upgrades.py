@@ -38,3 +38,13 @@ def upgrade_2_to_3(context, logger=None):
         purge_old=False,
     )
     logger.info('Reimported portal_languages.xml.')
+
+    setup = getToolByName(context, 'portal_setup')
+    logger.info('Setting external_links_open_new_window to true.')
+    setup.runImportStepFromProfile(
+        PROFILE_ID,
+        'propertiestool',
+        run_dependencies=False,
+        purge_old=False
+    )
+    logger.info('Setting external_links_open_new_window to true.')

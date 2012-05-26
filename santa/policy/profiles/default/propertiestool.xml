@@ -8,6 +8,9 @@
       name="disable_nonfolderish_sections"
       type="boolean">True</property>
     <property
+      name="external_links_open_new_window"
+      type="string">true</property>
+    <property
       name="use_email_as_login"
       type="boolean">True</property>
     <property

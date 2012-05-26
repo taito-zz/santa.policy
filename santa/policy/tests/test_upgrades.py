@@ -36,10 +36,24 @@ class TestCase(IntegrationTestCase):
             langs
         )
 
+        properties = getToolByName(self.portal, 'portal_properties')
+        site_properties = getattr(properties, 'site_properties')
+        site_properties.manage_changeProperties(default_editor=None, external_links_open_new_window='false')
+        self.failIf(site_properties.getProperty('default_editor'))
+        self.assertEqual(
+                site_properties.getProperty('external_links_open_new_window'),
+                'false'
+        )
+
         from santa.policy.upgrades import upgrade_2_to_3
         upgrade_2_to_3(self.portal)
 
         self.assertEqual(
             languages.supported_langs,
             ['en', 'fi', 'ja']
+        )
+
+        self.assertEqual(
+                site_properties.getProperty('external_links_open_new_window'),
+                'true'
         )
