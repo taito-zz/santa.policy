@@ -4,16 +4,15 @@ from setuptools import setup
 
 setup(
     name='santa.policy',
-    version='0.8.1',
+    version='0.9',
     description="Turns Plone Site into Santa Claus Foundation Site.",
     long_description=open("README.rst").read(),
     # Get more strings from
     # http://pypi.python.org/pypi?:action=list_classifiers
     classifiers=[
-    "Framework :: Plone",
-    "Framework :: Plone :: 4.1",
-    "Framework :: Plone :: 4.2",
-    "Programming Language :: Python",
+        "Framework :: Plone",
+        "Framework :: Plone :: 4.2",
+        "Programming Language :: Python",
     ],
     keywords='',
     author='ABITA',
