@@ -29,7 +29,7 @@ Continue your test::
     >>> browser.getControl(name="text").value = '<p>BODY OF PARTNER001.</p>'
     >>> browser.getControl(name="form.button.save").click()
 
-    >>> browser.open('/partners/partner01/view')
+    >>> browser.open('/partners/partner01')
 
     >>> print browser.bycss('#santa-partner')
     --- 1 ---
