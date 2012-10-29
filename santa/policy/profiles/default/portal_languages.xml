@@ -8,8 +8,6 @@
  <use_subdomain_negotiation value="False"/>
  <use_combined_language_codes value="False"/>
  <supported_langs>
-  <element value="en"/>
-  <element value="fi"/>
   <element value="ja"/>
  </supported_langs>
 </object>

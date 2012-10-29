@@ -3,7 +3,7 @@
   <object name="site_properties" meta_type="Plone Property Sheet">
     <property
       name="default_language"
-      type="string">en</property>
+      type="string">ja</property>
     <property
       name="disable_nonfolderish_sections"
       type="boolean">True</property>
@@ -25,7 +25,8 @@
     <property name="webstats_js" type="string">&lt;script type="text/javascript"&gt;
 
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-31909586-1']);
+  _gaq.push(['_setAccount', 'UA-789306-1']);
+  _gaq.push(['_setDomainName', 'abita.fi']);
   _gaq.push(['_trackPageview']);
 
   (function() {

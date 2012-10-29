@@ -5,7 +5,7 @@ from setuptools import setup
 setup(
     name='santa.policy',
     version='0.9',
-    description="Turns Plone Site into Santa Claus Foundation Site.",
+    description="Turns Plone Site into Santa Site.",
     long_description=open("README.rst").read(),
     # Get more strings from
     # http://pypi.python.org/pypi?:action=list_classifiers
