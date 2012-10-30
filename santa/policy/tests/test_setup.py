@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from Products.CMFCore.utils import getToolByName
 from santa.policy.tests.base import IntegrationTestCase
 
@@ -74,24 +75,19 @@ class TestCase(IntegrationTestCase):
 
     def test_properties__title(self):
         self.assertEqual(
-            self.portal.getProperty('title'),
-            'Santa Claus Foundation'
-        )
+            self.portal.getProperty('title'), 'サンタクロース派遣')
+
+    def test_properties__description(self):
+        self.assertEqual(self.portal.getProperty('description'),
+            '本場フィンランドのサンタクロースを呼ぼう！')
 
     def test_properties__email_from_address(self):
         self.assertEqual(
-            self.portal.getProperty('email_from_address'),
-            'santa@abita.fi'
-        )
+            self.portal.getProperty('email_from_address'), 'santa@abita.fi')
 
     def test_properties__email_from_name(self):
         self.assertEqual(
-            self.portal.getProperty('email_from_name'),
-            'Santa Claus Foundation'
-        )
-
-    def test_properties__default_page(self):
-        self.assertEqual(self.portal.getProperty('default_page'), 'santa-view')
+            self.portal.getProperty('email_from_name'), 'サンタクロース派遣')
 
     def test_propertiestool_site_properties__default_language(self):
         properties = getToolByName(self.portal, 'portal_properties')
@@ -107,9 +103,7 @@ class TestCase(IntegrationTestCase):
         properties = getToolByName(self.portal, 'portal_properties')
         site_properties = getattr(properties, 'site_properties')
         self.assertEqual(
-            site_properties.getProperty('external_links_open_new_window'),
-            'true'
-        )
+            site_properties.getProperty('external_links_open_new_window'), 'true')
 
     def test_propertiestool_site_properties__use_email_as_login(self):
         properties = getToolByName(self.portal, 'portal_properties')

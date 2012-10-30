@@ -1,15 +1,14 @@
 <?xml version="1.0"?>
 <site>
-  <property name="title">Santa Claus Foundation</property>
-  <property name="description">Be Santa for Kids' Future</property>
+  <property name="title">サンタクロース派遣</property>
+  <property name="description">本場フィンランドのサンタクロースを呼ぼう！</property>
   <property name="selectable_views" type="lines">
     <element value="folder_listing"/>
     <element value="news_listing"/>
   </property>
   <property name="email_from_address" type="string">santa@abita.fi</property>
-  <property name="email_from_name" type="string">Santa Claus Foundation</property>
+  <property name="email_from_name" type="string">サンタクロース派遣</property>
   <property name="validate_email" type="boolean">True</property>
   <property name="email_charset" type="string">utf-8</property>
   <property name="enable_permalink" type="boolean">False</property>
-  <property name="default_page" type="boolean">santa-view</property>
 </site>
