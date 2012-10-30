@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name='santa.policy',
-    version='0.9',
+    version='0.10',
     description="Turns Plone site into Santa site.",
     long_description=open("README.rst").read(),
     # Get more strings from
