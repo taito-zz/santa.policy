@@ -4,4 +4,5 @@
 *.pyo
 *~
 .DS_Store
+.long-description.html
 dist

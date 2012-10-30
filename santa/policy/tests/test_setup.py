@@ -28,8 +28,7 @@ class TestCase(IntegrationTestCase):
         setup = getToolByName(self.portal, 'portal_setup')
         self.assertEqual(
             setup.getVersionForProfile('profile-santa.policy:default'),
-            u'3'
-        )
+            u'3')
 
     def test_portal_languages_use_cookie_negotiation(self):
         languages = getToolByName(self.portal, 'portal_languages')
@@ -41,10 +40,7 @@ class TestCase(IntegrationTestCase):
 
     def test_portal_languages_supported_langs(self):
         languages = getToolByName(self.portal, 'portal_languages')
-        self.assertEqual(
-            languages.supported_langs,
-            ['en', 'fi', 'ja']
-        )
+        self.assertEqual(languages.supported_langs, ['ja'])
 
     def test_portlets_Login(self):
         from plone.portlets.interfaces import IPortletType
@@ -95,18 +91,12 @@ class TestCase(IntegrationTestCase):
         )
 
     def test_properties__default_page(self):
-        self.assertEqual(
-            self.portal.getProperty('default_page'),
-            'sll-view'
-        )
+        self.assertEqual(self.portal.getProperty('default_page'), 'santa-view')
 
     def test_propertiestool_site_properties__default_language(self):
         properties = getToolByName(self.portal, 'portal_properties')
         site_properties = getattr(properties, 'site_properties')
-        self.assertEqual(
-            site_properties.getProperty('default_language'),
-            'en'
-        )
+        self.assertEqual(site_properties.getProperty('default_language'), 'ja')
 
     def test_propertiestool_site_properties__disable_nonfolderish_sections(self):
         properties = getToolByName(self.portal, 'portal_properties')
@@ -149,8 +139,7 @@ class TestCase(IntegrationTestCase):
         site_props = properties.site_properties
         self.assertEqual(
             site_props.getProperty('webstats_js'),
-            '<script type="text/javascript">\n\nvar _gaq = _gaq || [];\n_gaq.push([\'_setAccount\', \'UA-31909586-1\']);\n_gaq.push([\'_trackPageview\']);\n\n(function() {\nvar ga = document.createElement(\'script\'); ga.type = \'text/javascript\'; ga.async = true;\nga.src = (\'https:\' == document.location.protocol ? \'https://ssl\' : \'http://www\') + \'.google-analytics.com/ga.js\';\nvar s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(ga, s);\n})();\n\n</script>'
-        )
+            '<script type="text/javascript">\n\nvar _gaq = _gaq || [];\n_gaq.push([\'_setAccount\', \'UA-789306-1\']);\n_gaq.push([\'_setDomainName\', \'abita.fi\']);\n_gaq.push([\'_trackPageview\']);\n\n(function() {\nvar ga = document.createElement(\'script\'); ga.type = \'text/javascript\'; ga.async = true;\nga.src = (\'https:\' == document.location.protocol ? \'https://ssl\' : \'http://www\') + \'.google-analytics.com/ga.js\';\nvar s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(ga, s);\n})();\n\n</script>')
 
     def test_mailhost__smtp_host(self):
         mailhost = getToolByName(self.portal, 'MailHost')

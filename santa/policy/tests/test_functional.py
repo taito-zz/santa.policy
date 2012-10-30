@@ -40,6 +40,9 @@ def setUp(self):
 
     setRoles(portal, TEST_USER_ID, ['Manager'])
 
+    # Set the site back in English mode to make testing easier.
+    portal.portal_languages.manage_setLanguageSettings('en', ['en', 'ja'])
+
     transaction.commit()
 
 
