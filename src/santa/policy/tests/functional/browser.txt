@@ -1,0 +1,3 @@
+Log in as the portal owner::
+
+    >>> browser.login(TEST_USER_NAME, TEST_USER_PASSWORD)

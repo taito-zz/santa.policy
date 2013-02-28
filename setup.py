@@ -7,8 +7,6 @@ setup(
     version='0.10',
     description="Turns Plone site into Santa site.",
     long_description=open("README.rst").read(),
-    # Get more strings from
-    # http://pypi.python.org/pypi?:action=list_classifiers
     classifiers=[
         "Framework :: Plone",
         "Framework :: Plone :: 4.2",
@@ -19,16 +17,13 @@ setup(
     author_email='taito.horiuchi@abita.fi',
     url='http://santa.abita.fi/',
     license='None-free',
-    packages=find_packages(exclude=['ez_setup']),
+    packages=find_packages('src', exclude=['ez_setup']),
+    package_dir={'': 'src'},
     namespace_packages=['santa'],
     include_package_data=True,
     zip_safe=False,
     install_requires=[
         'Products.LinguaPlone',
-        'abita.development',
-        'five.grok',
-        'hexagonit.testing',
-        'plone.browserlayer',
         'santa.theme',
         'setuptools'],
     entry_points="""

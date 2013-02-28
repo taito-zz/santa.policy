@@ -2,7 +2,6 @@
 <metadata>
   <version>3</version>
   <dependencies>
-    <dependency>profile-Products.LinguaPlone:LinguaPlone</dependency>
     <dependency>profile-santa.theme:default</dependency>
   </dependencies>
 </metadata>

@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <site>
-  <property name="title">サンタクロース派遣</property>
-  <property name="description">本場フィンランドのサンタクロースを呼ぼう！</property>
+  <property name="title">SANTA ABITA</property>
+  <property name="description">Santa Claus from Finland</property>
   <property name="selectable_views" type="lines">
     <element value="folder_listing"/>
     <element value="news_listing"/>
   </property>
   <property name="email_from_address" type="string">santa@abita.fi</property>
-  <property name="email_from_name" type="string">サンタクロース派遣</property>
+  <property name="email_from_name" type="string">SANTA ABITA</property>
   <property name="validate_email" type="boolean">True</property>
   <property name="email_charset" type="string">utf-8</property>
   <property name="enable_permalink" type="boolean">False</property>
