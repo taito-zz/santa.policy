@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name='santa.policy',
-    version='0.11',
+    version='0.11.1',
     description="Turns Plone site into Santa site.",
     long_description=open("README.rst").read(),
     classifiers=[
