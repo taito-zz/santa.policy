@@ -4,8 +4,13 @@ santa.policy
 
 santa.policy turns Plone site into Santa site.
 
-Change log
-----------
+Changelog
+---------
+
+0.11.1 (2013-03-23)
+===================
+
+- Hid log in link from actions. [taito]
 
 0.11 (2013-02-28)
 =================

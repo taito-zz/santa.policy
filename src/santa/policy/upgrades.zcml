@@ -1,0 +1,16 @@
+<configure
+  i18n_domain="santa.policy"
+  xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+  xmlns="http://namespaces.zope.org/zope">
+
+  <genericsetup:upgradeStep
+    description=""
+    destination="4"
+    handler="santa.policy.upgrades.reimport_actions"
+    profile="santa.policy:default"
+    sortkey="1"
+    source="3"
+    title="Reimport actions"
+    />
+
+</configure>

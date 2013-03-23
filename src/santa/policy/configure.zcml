@@ -9,6 +9,7 @@
   <include package="five.grok"/>
   <include package="santa.theme"/>
   <grok:grok package="."/>
+  <include file="upgrades.zcml"/>
 
   <genericsetup:registerProfile
     description="Installs the santa.policy package"

@@ -24,6 +24,7 @@ setup(
     zip_safe=False,
     install_requires=[
         'Products.LinguaPlone',
+        'abita.utils',
         'santa.theme',
         'setuptools'],
     entry_points="""

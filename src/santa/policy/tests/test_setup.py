@@ -17,6 +17,16 @@ class TestCase(IntegrationTestCase):
         actions = getToolByName(self.portal, 'portal_actions')
         self.assertFalse(actions.portal_tabs.index_html.getProperty('visible'))
 
+    def test_actions__user__dashboard(self):
+        actions = getToolByName(self.portal, 'portal_actions')
+        category = getattr(actions, 'user')
+        self.assertFalse(getattr(category, 'dashboard').getProperty('visible'))
+
+    def test_actions__user__login(self):
+        actions = getToolByName(self.portal, 'portal_actions')
+        category = getattr(actions, 'user')
+        self.assertFalse(getattr(category, 'login').getProperty('visible'))
+
     def test_mailhost__smtp_host(self):
         mailhost = getToolByName(self.portal, 'MailHost')
         self.assertEqual(mailhost.smtp_host, 'smtp.gmail.com')
@@ -33,7 +43,7 @@ class TestCase(IntegrationTestCase):
         setup = getToolByName(self.portal, 'portal_setup')
         self.assertEqual(
             setup.getVersionForProfile('profile-santa.policy:default'),
-            u'3')
+            u'4')
 
     def test_portal_languages_supported_langs(self):
         languages = getToolByName(self.portal, 'portal_languages')
