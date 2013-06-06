@@ -3,6 +3,7 @@ from plone.app.testing import IntegrationTesting
 from plone.app.testing import PLONE_FIXTURE
 from plone.app.testing import PloneSandboxLayer
 from plone.testing import z2
+from santa.theme.tests.base import IntegrationTestCase as BaseIntegrationTestCase
 
 import unittest
 
@@ -44,7 +45,7 @@ FUNCTIONAL_TESTING = FunctionalTesting(
     bases=(FIXTURE,), name="SantaPolicyLayer:Functional")
 
 
-class IntegrationTestCase(unittest.TestCase):
+class IntegrationTestCase(BaseIntegrationTestCase):
     """Base class for integration tests."""
 
     layer = INTEGRATION_TESTING

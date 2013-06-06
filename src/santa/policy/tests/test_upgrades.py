@@ -6,11 +6,8 @@ import mock
 class TestCase(IntegrationTestCase):
     """TestCase for upgrade step"""
 
-    def setUp(self):
-        self.portal = self.layer['portal']
-
-    @mock.patch('santa.policy.upgrades.reimport_profile')
-    def test_reimport_actions(self, reimport_profile):
+    def test_reimport_actions(self):
         from santa.policy.upgrades import reimport_actions
-        reimport_actions(self.portal)
-        reimport_profile.assert_called_with(self.portal, 'profile-santa.policy:default', 'actions')
+        setup = mock.Mock()
+        reimport_actions(setup)
+        setup.runImportStepFromProfile.assert_called_with('profile-santa.policy:default', 'actions', run_dependencies=False, purge_old=False)

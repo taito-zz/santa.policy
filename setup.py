@@ -23,8 +23,6 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        'Products.LinguaPlone',
-        'abita.utils',
         'santa.theme',
         'setuptools'],
     extras_require={'test': ['hexagonit.testing']},

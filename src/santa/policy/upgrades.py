@@ -1,9 +1,6 @@
-from abita.utils.utils import reimport_profile
-
-
 PROFILE_ID = 'profile-santa.policy:default'
 
 
-def reimport_actions(context):
+def reimport_actions(setup):
     """Reimport actions"""
-    reimport_profile(context, PROFILE_ID, 'actions')
+    setup.runImportStepFromProfile(PROFILE_ID, 'actions', run_dependencies=False, purge_old=False)
